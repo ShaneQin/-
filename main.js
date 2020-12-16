@@ -58,3 +58,16 @@ new MyPromise((resolve, reject) => {
 }).then(value => {
   console.log(value);
 });
+
+// 自己实现一个call
+Function.prototype.myCall = function (context) {
+  if (typeof this !== 'function') {
+    throw new TypeError('Error');
+  }
+  context = context || window;
+  context.fn = this;
+  const args = [...arguments].slice(1);
+  const result = context.fn(...args);
+  delete context.fn;
+  return result;
+}
