@@ -88,3 +88,18 @@ Function.prototype.myApply = function (context) {
   delete context.fn;
   return result;
 }
+
+// 自己实现一个bind
+Function.prototype.myBind = function (context) {
+  if (typeof this !== 'function') {
+    throw new Error('Error');
+  }
+  const _this = this;
+  const args = [...arguments].slice(1);
+  return function F() {
+    if (this instanceof F) {
+      return new _this(...args, ...arguments);
+    }
+    return _this.apply(context, args.concat(...arguments));
+  }
+}
