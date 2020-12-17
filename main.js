@@ -103,3 +103,12 @@ Function.prototype.myBind = function (context) {
     return _this.apply(context, args.concat(...arguments));
   }
 }
+
+// 自己实现一个new
+function create() {
+  let obj = {};
+  let Con = [].shift.call(arguments);
+  obj.__proto__ = Con.prototype;
+  let result = Con.apply(obj, arguments);
+  return result instanceof Object ? result : obj;
+}
