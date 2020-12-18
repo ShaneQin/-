@@ -33,3 +33,27 @@ function BFS(root) {
     }
   }
 }
+
+// 数组元素全排列
+const permute = function (nums) {
+  const len = nums.length;
+  const res = [];
+  const visited = {};
+  const temp = [];
+  const DFS = (nth) => {
+    if (nth === len) {
+      return res.push([...temp]);
+    }
+    for (let i = 0; i < len; i++) {
+      if (!visited[i]) {
+        temp.push(nums[i]);
+        visited[i] = true;
+        DFS(nth + 1);
+        temp.pop();
+        visited[i] = false;
+      }
+    }
+  }
+  DFS(0);
+  return res;
+}
