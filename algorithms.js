@@ -78,3 +78,24 @@ const preorderTraversal = function (root) {
   }
   return res;
 }
+
+// 迭代算法实现后序遍历二叉树
+const postorderTraversal = function (root) {
+  const res = [];
+  if (!root) {
+    return res;
+  }
+  const stack = [];
+  stack.push(root);
+  while (stack.length) {
+    const cur = stack.pop();
+    res.unshift(cur.val);
+    if (cur.left) {
+      stack.push(cur.left);
+    }
+    if (cur.right) {
+      stack.push(cur.right);
+    }
+  }
+  return res;
+}
