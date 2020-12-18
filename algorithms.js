@@ -17,3 +17,19 @@ function preorder(root) {
   preorder(root.left);
   preorder(root.right);
 }
+
+// 广度优先遍历二叉树
+function BFS(root) {
+  const queue = [];
+  queue.push(root);
+  while (queue.length) {
+    const top = queue.shift();
+    console.log(top.val);
+    if (top.left) {
+      queue.push(top.left);
+    }
+    if (top.right) {
+      queue.push(top.right);
+    }
+  }
+}
