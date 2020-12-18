@@ -34,6 +34,25 @@ function BFS(root) {
   }
 }
 
+// 迭代算法实现先序遍历二叉树
+const preorderTraversal = function (root) {
+  const res = [];
+  if (!root) {
+    return res;
+  }
+  const stack = [];
+  stack.push(root);
+  while (stack.length) {
+    const cur = stack.pop();
+    if (cur.right) {
+      stack.push(cur.right);
+    }
+    if (cur.left) {
+      stack.push(cur.left);
+    }
+  }
+  return res;
+}
 // 数组元素全排列
 const permute = function (nums) {
   const len = nums.length;
