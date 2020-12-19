@@ -155,3 +155,9 @@ function throttle(fn, delay) {
     }, delay);
   }
 }
+
+// 自己实现一个柯里化函数
+const curring = (fn, ...args) => fn.length > args.length ? (...arguments) => curring(fn, ...args, ...arguments) : fn(...args);
+
+      fn.apply(context, args);函数
+      fn.apply(context, args);
