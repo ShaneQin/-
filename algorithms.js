@@ -116,3 +116,19 @@ const inorderTraversal = function (root) {
   }
   return res;
 }
+
+// 二叉搜索树查找数据域为某一特定值的结点
+function search(root, n) {
+  if (!root) {
+    return;
+  }
+  if (root.val === n) {
+    console.log('目标节点是：', root);
+  }
+  if (root.val > n) {
+    search(root.left, n);
+  }
+  if (root.val < n) {
+    search(root.left, n);
+  }
+}
