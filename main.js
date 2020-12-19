@@ -127,3 +127,15 @@ function myInstanceof(left, right) {
     left = left.__proto__;
   }
 }
+
+// 自己实现一个防抖函数
+function debounce(fn, delay) {
+  let timer = null;
+  return function (...args) {
+    const context = this;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args)
+    }, delay);
+  }
+}
