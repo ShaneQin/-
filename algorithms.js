@@ -124,11 +124,9 @@ function search(root, n) {
   }
   if (root.val === n) {
     console.log('目标节点是：', root);
-  }
-  if (root.val > n) {
+  } else if (root.val > n) {
     search(root.left, n);
-  }
-  if (root.val < n) {
+  } else if (root.val < n) {
     search(root.left, n);
   }
 }
