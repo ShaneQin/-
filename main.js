@@ -139,3 +139,19 @@ function debounce(fn, delay) {
     }, delay);
   }
 }
+
+// 自己实现一个节流函数
+function throttle(fn, delay) {
+  let timer = null;
+  let flag = true;
+  return function (...args) {
+    if (!flag) return;
+    const context = this;
+    flag = false;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+      flag = true;
+    }, delay);
+  }
+}
