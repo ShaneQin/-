@@ -130,3 +130,16 @@ function search(root, n) {
     search(root.left, n);
   }
 }
+
+// 二叉搜索树插入新节点
+ function insertIntoBST(root, n) {
+  if (!root) {
+    root = new TreeNode(n);
+    return root;
+  }
+  if (root.val > n) {
+    insertIntoBST(root.left, n);
+  } else {
+    insertIntoBST(root.left, n);
+  }
+}
