@@ -159,5 +159,19 @@ function throttle(fn, delay) {
 // 自己实现一个柯里化函数
 const curring = (fn, ...args) => fn.length > args.length ? (...arguments) => curring(fn, ...args, ...arguments) : fn(...args);
 
-      fn.apply(context, args);函数
-      fn.apply(context, args);
+// 自己实现深拷贝函数
+function deepClone(obj, map = new WeakMap()) {
+  if (obj instanceof Date) return new Date(obj);
+  if (obj instanceof RegExp) return new RegExp(obj);
+  if (obj == null || typeof obj !== 'object') return obj;
+  if (map.has(obj)) return map.get(obj);
+  const t = new obj.constructor();
+  map.set(obj, t);
+  console.log(map);
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      t[key] = deepClone(obj[key], map);
+    }
+  }
+  return t;
+}
