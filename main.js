@@ -167,7 +167,6 @@ function deepClone(obj, map = new WeakMap()) {
   if (map.has(obj)) return map.get(obj);
   const t = new obj.constructor();
   map.set(obj, t);
-  console.log(map);
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
       t[key] = deepClone(obj[key], map);
